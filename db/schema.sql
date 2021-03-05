@@ -1,0 +1,1 @@
+CREATE DATABASE arcade_db;

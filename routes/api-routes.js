@@ -40,7 +40,7 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      console.log(req.user.email)
+      //console.log(req.user.email)
       let userEmail = req.user.email
       // res.json({
       //   email: req.user.email,
@@ -77,6 +77,19 @@ module.exports = function(app) {
     )
       .then(function() {
         res.json({});
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+
+//add score
+  app.post("/api/signup", function(req, res) {
+    db.machOneScore.create({
+      score: req.body.score,
+      UserId: req.user.id
+    })
+      .then(function() {
       })
       .catch(function(err) {
         res.status(401).json(err);

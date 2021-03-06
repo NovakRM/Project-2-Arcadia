@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const machOneScore = sequelize.define('Post', {
+    const machOneScore = sequelize.define('machOneScore', {
       score: {
         type: DataTypes.STRING,
         allowNull: false,

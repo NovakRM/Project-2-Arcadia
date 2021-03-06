@@ -19,6 +19,12 @@ const nameInput = document.getElementById('userName');
         userInfo = data
       });
 
+      // $.get("/api/image").then(function(data) {
+      //   //console.log(data[0].email)
+      //     if (!data[0].userName){
+      //         $(".member-name").text(data[0].email);
+      //     }
+      //   });
 
 const handleFormSubmit = (e) => {
 //  e.preventDefault();

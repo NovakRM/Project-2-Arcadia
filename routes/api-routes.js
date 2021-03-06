@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const uploadController = require("../public/js/upload");
+const upload = require("../config/middleware/upload");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -96,7 +98,8 @@ module.exports = function(app) {
       });
   });
 
-
+// Add photo
+app.post("/upload", upload.single("file"), uploadController.uploadFiles);
 
 
 

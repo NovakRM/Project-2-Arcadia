@@ -4,6 +4,7 @@ form.login {
 }
 body {
   margin: 0;
+  background-color: #0e1318;
 }
 canvas{
   max-width: 100%;
@@ -15,3 +16,10 @@ canvas{
   position: absolute;
   top: 70%;
 }
+
+/* 
+#0e1318
+#ee1f67 
+#f7b71d
+#19b5b8
+*/

@@ -135,6 +135,25 @@ function update ()
     if (gameOver)
     {
         console.log(score)
+
+                const newScore = {
+                        score: score
+                }   
+
+                const sendScore = (post) => {
+                    fetch('/api/game', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        },
+                    body: JSON.stringify(post),
+                    })
+                    .then(() =>{})
+                    .catch((err) => console.error(err));
+                };
+
+        sendScore(newScore)
+        game.destroy(false,[true])
         return;
     }
 

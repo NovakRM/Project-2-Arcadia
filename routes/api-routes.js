@@ -86,7 +86,7 @@ module.exports = function(app) {
   });
 
 //add score
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/game", function(req, res) {
     db.machOneScore.create({
       score: req.body.score,
       UserId: req.user.id

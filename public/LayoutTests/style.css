@@ -1,46 +1,113 @@
+/** ================== ALL VIEWS ================== **/
+
 html {
     /* Positioning */
     position: relative;
-  
     /* Box-model */
     min-height: 100%;
 }
 
 body{
+    background-image: url("bg.png");
     background-color: #0e1318;
     color: #ffffff;
     font-family: 'Barlow', sans-serif;
 }
 
+/*Queries*/
+@media only screen and (max-width: 800px) {
+    .cover-wrap {
+        width: 100vw;
+        height: auto;
+        padding: 50px 0;
+        position: relative;
+    }
+
+    header nav {display: none;}
+    footer {display: block;} 
+}
+
+
+/*Links*/
 a{
     color: #ee1f67;
+    padding: 10px;
 }
 a:hover{
     color: #19b5b8;
 }
+/*---*/
 
-li{
-    padding: 10px;
+/*Buttons*/
+.btn{
+    background-color: #19b5b8;
+    color: #0e1318;
 }
+.btn:hover{
+    background-color: #ee1f67;
+}
+/*---*/
 
-.nav{
-    width: 100%;
-    padding: 15px;
+.container{
     display: flex;
-    line-height: 1;
+    /* flex-direction: column; */
     align-items: center;
-    color: #ffffff;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-.hamburger {
-    font-size: 20px;
-    color: #fff;
+.header{
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2em;
+    z-index: 99;
+    background: rgba( 1, 5, 13, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    display: block;
 }
+
+.footer{    
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2em;
+    z-index: 99;
+    background: rgba( 1, 5, 13, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    display: none;
+}
+
+.hTitle {
+    font-family: 'Press Start 2P', cursive;
+    color: #ee1f67;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hNav{
+    float: right;
+    position: absolute;
+    right: 2em;
+    top: 1.75em;
+}
+
+/** ================== LANDING PAGE / INDEX ================== **/
 
 .main{
+    top: 25vh;
+    width: 100%;
+    padding: 1.5em 2em 0 2em;
     position: relative;
-    top: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -51,14 +118,38 @@ li{
     top: 100px;
     font-family: 'Press Start 2P', cursive;
     color: #ee1f67;
-    text-shadow: -1px 0 #f7b71d, 0 1px #f7b71d, 1px 0 #f7b71d, 0 -1px #f7b71d;
+    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 30px;
 }
 
-.btn{
-    background-color: #19b5b8;
+#parallax{
+    width: 50%;
+    height: 55vh;
+    background-image: url("floarty.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: 50% 50%;
+}
+
+/** ================== MODALS ================== **/
+
+.modal{
+    color: #ffffff;
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 75%;
+    height: 75%;
+    padding: 2em;
+    z-index: 1;
+    background: rgba( 1, 5, 13, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
 }
 
 /* 

@@ -1,20 +1,155 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+/** ================== ALL VIEWS ================== **/
+
+html {
+  /* Positioning */
+  position: relative;
+  /* Box-model */
+  min-height: 100%;
 }
-body {
-  margin: 0;
+
+body{
+  background-image: url("../LayoutTests/bg.png");
   background-color: #0e1318;
+  color: #ffffff;
+  font-family: 'Barlow', sans-serif;
 }
-canvas{
-  max-width: 100%;
-  height: auto;
-  position: absolute;
+
+/*Queries*/
+@media only screen and (max-width: 800px) {
+  .cover-wrap {
+      width: 100vw;
+      height: auto;
+      padding: 50px 0;
+      position: relative;
+  }
+
+  header nav {display: none;}
+  footer {display: block;} 
+}
+
+
+/*Links*/
+a{
+  color: #ee1f67;
+  padding: 10px;
+}
+a:hover{
+  color: #19b5b8;
+}
+/*---*/
+
+/*Buttons*/
+.btn{
+  background-color: #19b5b8;
+  color: #0e1318;
+}
+.btn:hover{
+  background-color: #ee1f67;
+}
+/*---*/
+
+.container{
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+}
+
+.header{
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
+  right: 0;
+  padding: 2em;
+  z-index: 99;
+  background: rgba( 1, 5, 13, 0.5 );
+  box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  display: block;
 }
-.nav{
+
+.footer{    
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2em;
+  z-index: 99;
+  background: rgba( 1, 5, 13, 0.5 );
+  box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  display: none;
+}
+
+.hTitle {
+  font-family: 'Press Start 2P', cursive;
+  color: #ee1f67;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hNav{
+  float: right;
   position: absolute;
-  top: 70%;
+  right: 2em;
+  top: 1.75em;
+}
+
+/** ================== LANDING PAGE / INDEX ================== **/
+
+.main{
+  top: 25vh;
+  width: 100%;
+  padding: 1.5em 2em 0 2em;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.greeting{
+  position: relative;
+  top: 100px;
+  font-family: 'Press Start 2P', cursive;
+  color: #ee1f67;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30px;
+}
+
+#parallax{
+  width: 50%;
+  height: 55vh;
+  background-image: url("../LayoutTests/floarty.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: 50% 50%;
+}
+
+/** ================== MODALS ================== **/
+
+.modal{
+  color: #ffffff;
+  position: fixed;
+  top: 15%;
+  left: 15%;
+  width: 75%;
+  height: 75%;
+  padding: 2em;
+  z-index: 1;
+  background: rgba( 1, 5, 13, 0.5 );
+  box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
 }
 
 /* 

@@ -1,34 +1,89 @@
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-      </div>
+<div class="container">
+    <div class="header">
+        <h2 class="hTitle">Arcadia</h2>
+        <div class="hNav">
+            <a href="/"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+            <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+            <a href="/game"><i class="fa fa-gamepad fa-lg" aria-hidden="true" alt="game icon, play a game"></i></a>
+            <a href="/highscore"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+        </div>
     </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
+    
+    <div class="main">            
+      <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <h2>Signup</h2>
         <form class="signup">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
-          </div>
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div>
-          <button type="submit" class="btn btn-default">Sign Up</button>
+        <div class="form-group">
+            <label for="emailInput">Email address</label>
+            <input type="email" class="form-control" id="new-email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="new-password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Signup</button>
         </form>
-        <br />
-        <p>Or log in <a href="/login">here</a></p>
+        <br>
+    </div>
+
+
+    <div id="id02" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <h2>Login</h2>
+      <form class="login">
+      <div class="form-group">
+          <label for="emailInput">Email address</label>
+          <input type="email" class="form-control" id="email-input" placeholder="Email">
       </div>
+      <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" id="password-input" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-default">Login</button>
+      </form>
+      <br>
+  </div>
+
+    <div class="greeting">
+        <h1>Welcome</h1>
+        <div>
+            <button onclick="document.getElementById('id01').style.display='block'" type="button" class="btn">Signup</button>
+
+            <button onclick="document.getElementById('id02').style.display='block'" type="button" class="btn">Login</button>
+        </div>
+    </div>
+    <div id="parallax">
     </div>
   </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script type="text/javascript" src="/js/signup.js"></script>
+</div>
+<footer>
+  <!-- <div class="hNav">
+      <a href="/"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/"><i class="fa fa-gamepad fa-lg" aria-hidden="true" alt="game icon, play a game"></i></a>
+      <a href="/"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+  </div> -->
+</footer>
+<script>
+  (function() {
+      document.addEventListener("mousemove", parallax);
+      const elem = document.querySelector("#parallax");
+      function parallax(e) {
+          let _w = window.innerWidth/2;
+          let _h = window.innerHeight/2;
+          let _mouseX = e.clientX;
+          let _mouseY = e.clientY;
+          let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+          let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+          let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+          let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+          elem.style.backgroundPosition = x;
+      }
+  })();
+</script>
+		  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/signup.js"></script> 

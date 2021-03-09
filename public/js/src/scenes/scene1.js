@@ -29,7 +29,6 @@ export default class Game extends Phaser.Scene {
 
     //called to allow us to specify images, audio, and other assets that need to load before starting the scene.
     preload() {
-        scene.loader.setPath('../../../views/game2.handlebars')
         //load has logic for loading images, audio, spritesheets, etc.
         //the first parameter is the 'key' or name and the second is the path to the asset.
         //key is used as a reference later to call the object.

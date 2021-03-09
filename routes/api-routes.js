@@ -97,6 +97,18 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+//add score for second game
+  app.post("/api/game2", function(req, res) {
+    db.machOneScore.create({
+      score: req.body.score,
+      UserId: req.user.id
+    })
+      .then(function() {
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
 
 // Add photo
 app.post("/upload", upload.single("file"), uploadController.uploadFiles);

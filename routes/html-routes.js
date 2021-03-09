@@ -36,5 +36,9 @@ module.exports = function(app) {
   app.get("/game", isAuthenticated, function(req, res) {
     res.render('game');
   });
+  //route for game2
+  app.get("/game2", isAuthenticated, function(req, res) {
+    res.render('game2');
+  });
 
 };

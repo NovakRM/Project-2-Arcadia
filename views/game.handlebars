@@ -1,11 +1,13 @@
 <div class="nav row">
     <div class="col-6">
-            <a href="/profile"><button id="profBtn" class="btn btn-dark">Update your Profile</button></a>   
+            <a href="/game"><button id="profBtn" class="btn btn-dark">Play Again</button></a>   
     </div>
     <div class="col-2">
             <a href="/highscores"><button id="scoreBtn" class="btn btn-dark">High Scores</button></a>
     </div>
-    <br></br>
+    <div class="col-6">
+            <a href="/profile"><button id="profBtn" class="btn btn-dark">Update your Profile</button></a>   
+    </div>
 </div>
 
 
@@ -117,7 +119,8 @@ function create ()
     bombs = this.physics.add.group();
 
     //  The score
-    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#ffff' });
+
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
@@ -151,7 +154,8 @@ function update ()
                     .then(() =>{})
                     .catch((err) => console.error(err));
                 };
-
+                
+        this.add.text(240, 220, 'Game Over', { fontSize: '65px', fill: '#d40000', fontFamily: 'Georgia' });
         sendScore(newScore)
         game.destroy(false,[true])
         return;

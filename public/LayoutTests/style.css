@@ -144,6 +144,7 @@ a:hover{
     width: 75%;
     height: 75%;
     padding: 2em;
+    overflow-y: auto;
     z-index: 1;
     background: rgba( 1, 5, 13, 0.5 );
     box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);

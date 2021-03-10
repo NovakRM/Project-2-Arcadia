@@ -63,7 +63,7 @@ a:hover{
   left: 0;
   right: 0;
   padding: 2em;
-  z-index: 99;
+  z-index: 1;
   background: rgba( 1, 5, 13, 0.5 );
   box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
   backdrop-filter: blur( 4px );
@@ -126,12 +126,10 @@ a:hover{
 }
 
 #parallax{
-  width: 50%;
-  height: 55vh;
+  width: 40%;
+  height: 100vh;
   background-image: url("../LayoutTests/floarty.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-position: 50% 50%;
 }
 
 /** ================== MODALS ================== **/
@@ -141,15 +139,29 @@ a:hover{
   position: fixed;
   top: 15%;
   left: 15%;
+  padding: 2em;
   width: 75%;
   height: 75%;
-  padding: 2em;
-  z-index: 1;
+  overflow-y: auto;
+  z-index: 99;
   background: rgba( 1, 5, 13, 0.5 );
   box-shadow: 0 8px 32px 0 rgba(7, 9, 37, 0.37);
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #19b5b8;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0e1318;
 }
 
 /* 

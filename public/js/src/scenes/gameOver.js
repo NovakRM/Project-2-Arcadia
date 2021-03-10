@@ -8,8 +8,8 @@ export default class GameOver extends Phaser.Scene {
     create() {
 
         //use the scale manager to get width and height instead of hard coding it in
-        const width = this.scale.width
-        const height = this.scale.height
+        const width = Phaser.width
+        const height = Phaser.height
 
         this.add.text(width * 0.5, height * 0.5, 'Game Over', {
             fontSize: 48

@@ -41,4 +41,42 @@ module.exports = function(app) {
     res.render('game2');
   });
 
+     //route for game one highscores
+     app.get("/highscores", isAuthenticated, function(req, res) {
+      db.machOneScore.findAll({
+        include: [db.User]
+      }).then((data) => {
+        console.log(data)
+        const obj = {
+        scores: data.map(data =>{
+          return {
+            score: data.score,
+            userName: data.User.userName
+          }
+        })
+        }
+  
+        res.render('highscore',(obj));
+      })
+    });
+
+         //route for game two highscores
+         app.get("/highscores-two", isAuthenticated, function(req, res) {
+          db.machTwoScore.findAll({
+            include: [db.User]
+          }).then((data) => {
+            console.log(data)
+            const obj = {
+            scores: data.map(data =>{
+              return {
+                score: data.score,
+                userName: data.User.userName
+              }
+            })
+            }
+      
+            res.render('highscore-two',(obj));
+          })
+        });
+
 };

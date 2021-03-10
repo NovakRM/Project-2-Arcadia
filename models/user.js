@@ -40,7 +40,14 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: 'cascade',
     });
   };
-
+  
+  User.associate = (models) => {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+  User.hasMany(models.machTwoScore, {
+      onDelete: 'cascade',
+    });
+  };
 
   User.associate = (models) => {
     // Associating Author with Posts

@@ -2,6 +2,7 @@
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+var db = require("../models");
 
 module.exports = function(app) {
 
@@ -44,9 +45,12 @@ module.exports = function(app) {
      //route for game one highscores
      app.get("/highscores", isAuthenticated, function(req, res) {
       db.machOneScore.findAll({
-        include: [db.User]
+        include: [db.User],
+        order: [
+          ['score', 'DESC'],
+    ],
       }).then((data) => {
-        console.log(data)
+        //console.log(data)
         const obj = {
         scores: data.map(data =>{
           return {

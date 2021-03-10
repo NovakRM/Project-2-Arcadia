@@ -1,7 +1,10 @@
 import Phaser from '../lib/phaser.js';
 import Star from  '../game/star.js';
+import GameOver from '../scenes/gameOver.js'
+import phaser from '../lib/phaser.js';
 
 
+var scoreText;
 export default class Game extends Phaser.Scene {
     //allows Intelliscense to continue providing help with player property
     //----Phaser properties-------
@@ -14,10 +17,10 @@ export default class Game extends Phaser.Scene {
     /** @type {Phaser.Physics.Arcade.Group} */
     star
     /** @type {Phaser.GameObjects.Text} */
-    starCollectedText
+    starCollectedText = 'Star : 0'
 
     starCollected = 0;
-
+    
     constructor()
     {
         super('game')
@@ -51,6 +54,7 @@ export default class Game extends Phaser.Scene {
     }
     //called after preload has loaded the assets. Only assets that have been loaded can be called in the create function.
     create() {
+        console.log(this)
         //--------background--------
         //first parameter is the x value, second y value and the last parament is the key to call the object.
         //setScrollFactor(x, y)- keeps the object from scrolling
@@ -69,7 +73,7 @@ export default class Game extends Phaser.Scene {
 
             /** @type {Phaser.Physics.Arcade.Sprite} */
             const platform = this.platforms.create (x, y, 'platform')
-            platform.scale = 0.2;
+            platform.setScale(0.2);
             
             /** @type {Phaser.Physics.Arcade.StaticBody} */
             const body = platform.body;
@@ -85,11 +89,11 @@ export default class Game extends Phaser.Scene {
         this.player.body.checkCollision.up = false;
         this.player.body.checkCollision.left = false;
         this.player.body.checkCollision.right = false;
-
+        
         //camera logic
         this.cameras.main.startFollow(this.player)
         //set the horizontal dead zone to 1.5x game width
-        this.cameras.main.setDeadzone(this.scale.width * 1.5)
+        this.cameras.main.setDeadzone(Phaser.width * 1.5)
 
         //---------star--------
 
@@ -118,7 +122,8 @@ export default class Game extends Phaser.Scene {
         )
         //text(x-axis, y-axis, intial text, argument for styles)
         const style = {color: '#000', fontSize: 24}
-        this.starCollectedText = this.add.text(240, 10, 'Star: 0', style)
+        // Phaser.starCollectedText = 
+        scoreText = this.add.text(240, 10, this.starCollectedText, style)
             //stop from scrolling off screen
             .setScrollFactor(0)
             //keep the text top centered. Also called a anchor or pivot point
@@ -139,7 +144,7 @@ export default class Game extends Phaser.Scene {
             this.player.setTexture('hero-jump')
 
             //add audio to the jump
-            this.sound.play('jump')
+            // this.sound.play('jump')
         }
         //get the y velocity by accesing the velocity property of the sprites physics body
         const vy = this.player.body.velocity.y;
@@ -203,7 +208,7 @@ export default class Game extends Phaser.Scene {
         */
      horizontalWrap(sprite) {
         const halfWidth = sprite.displayWidth * 0.5;
-        const gameWidth = this.scale.width;
+        const gameWidth = Phaser.width;
         if(sprite.x < -halfWidth) {
             sprite.x = gameWidth + halfWidth;
         }else if(sprite.x > gameWidth + halfWidth) {
@@ -219,7 +224,7 @@ export default class Game extends Phaser.Scene {
             const y = sprite.y - sprite.displayHeight;
 
             /** @type {Phaser.Physics.Arcade.Sprite} */
-            const star = this.star.get(sprite.x, y, 'star').setScale(0.3)
+            const star = this.star.get(sprite.x, y, 'star').setScale(0.8)
 
             //set active and visible
             star.setActive(true)
@@ -244,10 +249,12 @@ export default class Game extends Phaser.Scene {
             //disable from physics world
             this.physics.world.disableBody(star.body)
             //increment your score per star
-            this.starCollected++
+            this.starCollected ++
             //create new text value and set it
             const value = `Star: ${this.starCollected}`
-            this.starCollectedText.text = value
+            // console.log(starCollectedText)
+            scoreText.setText(value)
+            
         }
         //algo for finding the bottom most object
         findBottomMostPlatform() {

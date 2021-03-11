@@ -21,6 +21,8 @@ export default class Game extends Phaser.Scene {
     starCollectedText = 'Star : 0'
 
     starCollected = 0;
+    isClicking = false;
+
     
     constructor()
     {
@@ -196,7 +198,20 @@ export default class Game extends Phaser.Scene {
             console.log('restart')
             this.scene.restart(Game);
         }
-
+        if(!this.input.activePointer.isDown && isClicking == true) {
+            plane.y = this.input.activePointer.position.y;
+            isClicking = false;
+        } else if(this.input.activePointer.isDown && isClicking == false) {
+            isClicking = true;
+        }
+        if(Math.abs(plane.y - plane.getData("positionY")) <= 10) {
+            plane.y = plane.getData("positionY");
+        } else if(plane.y < plane.getData("positionY")) {
+            plane.y += 5;
+        } else if(plane.y > plane.getData("positionY")) {
+            plane.y -= 5;
+        }
+        
         
         
 

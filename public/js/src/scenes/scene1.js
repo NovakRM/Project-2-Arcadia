@@ -5,6 +5,7 @@ import phaser from '../lib/phaser.js';
 
 
 var scoreText;
+var gameOver = false;
 export default class Game extends Phaser.Scene {
     //allows Intelliscense to continue providing help with player property
     //----Phaser properties-------
@@ -42,6 +43,7 @@ export default class Game extends Phaser.Scene {
         this.load.image('platform', 'assets/stone.png')
         this.load.image('hero-idle', 'assets/hero1.png')
         this.load.image('hero-jump', 'assets/hero2.png')
+        this.load.image('chain', 'assets/chain.png')
         //star
         this.load.image('star', 'assets/star.png')
         //player input
@@ -54,7 +56,7 @@ export default class Game extends Phaser.Scene {
     }
     //called after preload has loaded the assets. Only assets that have been loaded can be called in the create function.
     create() {
-        console.log(this)
+        
         //--------background--------
         //first parameter is the x value, second y value and the last parament is the key to call the object.
         //setScrollFactor(x, y)- keeps the object from scrolling
@@ -69,17 +71,17 @@ export default class Game extends Phaser.Scene {
         
         for(let i = 0; i < 5; i++) {
             const x = Phaser.Math.Between(32, 472)
-            const y = 160 * i;
+            const y = 150 * i;
 
             /** @type {Phaser.Physics.Arcade.Sprite} */
             const platform = this.platforms.create (x, y, 'platform')
-            platform.setScale(0.2);
+            platform.setScale(0.3);
             
             /** @type {Phaser.Physics.Arcade.StaticBody} */
             const body = platform.body;
             body.updateFromGameObject();
         }
-        
+
         //--------player---------
         //use class property instead of local variable
         this.player = this.physics.add.sprite(240, 320, 'hero-idle').setScale(2);
@@ -89,7 +91,7 @@ export default class Game extends Phaser.Scene {
         this.player.body.checkCollision.up = false;
         this.player.body.checkCollision.left = false;
         this.player.body.checkCollision.right = false;
-        
+        this.physics.world.setBounds( 0, 0, Phaser.width, Phaser.height )
         //camera logic
         this.cameras.main.startFollow(this.player)
         //set the horizontal dead zone to 1.5x game width
@@ -128,6 +130,7 @@ export default class Game extends Phaser.Scene {
             .setScrollFactor(0)
             //keep the text top centered. Also called a anchor or pivot point
             .setOrigin(0.5, 0)
+            
     }
 
     //code that gets called every frame. refered to as the 'update loop'.
@@ -138,13 +141,13 @@ export default class Game extends Phaser.Scene {
         
         if (touchingDown) {
             //make bunny jump
-            this.player.setVelocityY(-300)
+            this.player.setVelocityY(-350)
 
             //switch to the jump texture
             this.player.setTexture('hero-jump')
 
             //add audio to the jump
-            // this.sound.play('jump')
+            this.sound.play('jump')
         }
         //get the y velocity by accesing the velocity property of the sprites physics body
         const vy = this.player.body.velocity.y;
@@ -161,7 +164,7 @@ export default class Game extends Phaser.Scene {
             const platform = child;
             const scrollY = this.cameras.main.scrollY;
             if (platform.y >= scrollY + 700) {
-                platform.y = scrollY - Phaser.Math.Between(50, 100)
+                platform.y = scrollY - Phaser.Math.Between(50, 150)
                 platform.body.updateFromGameObject();
                 //add a Star above new platforms
                 this.addStarAbove(platform)
@@ -189,16 +192,22 @@ export default class Game extends Phaser.Scene {
             //stop the movement if not left or right
             this.player.setVelocityX(0)
         }
+        if(this.cursors.down.isDown) {
+            console.log('restart')
+            this.scene.restart(Game);
+        }
 
-        //horizontal wrapping
-        this.horizontalWrap(this.player);
+        
+        
 
         const bottomPlatform = this.findBottomMostPlatform();
         //check if the player is past the bottom object
         if(this.player.y > bottomPlatform.y + 200) {
-            this.scene.start('game-over')
-            
+            gameOver = true
+            this.add.text(240, 10, 'Game Over', { fontSize: '65px', fill: '#d40000', fontFamily: 'Georgia' });
+            this.endGame()
         }
+        
 
     }
 
@@ -273,4 +282,32 @@ export default class Game extends Phaser.Scene {
             }
             return bottomPlatform;
         }
+
+        endGame() { 
+            if (gameOver === true)   {
+                // console.log(this.starCollected)
+                const newScore = {
+                        score: this.starCollected
+                }   
+        
+                const sendScore = (post) => {
+                    fetch('/api/game2', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        },
+                    body: JSON.stringify(post),
+                    })
+                    .then(() =>{})
+                    .catch((err) => console.error(err));
+                };
+                        
+                
+                sendScore(newScore)
+                this.scene.restart(Game);
+                return;
+            }
+        }
+
+        
 }

@@ -100,7 +100,7 @@ module.exports = function(app) {
   });
 //add score for second game
   app.post("/api/game2", function(req, res) {
-    db.machOneScore.create({
+    db.machTwoScore.create({
       score: req.body.score,
       UserId: req.user.id
     })

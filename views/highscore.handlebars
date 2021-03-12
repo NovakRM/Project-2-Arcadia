@@ -37,7 +37,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-
 let images = $(".profImage")
 console.log(images)
 
@@ -52,9 +51,5 @@ $.get(`/api/photo/${images[i].id}`).then(function(data){
     $(`#${images[i].id}`).attr("src", `/assets/tmp/${img}`)
   }
 })
-
-
-
 }
-
 </script>

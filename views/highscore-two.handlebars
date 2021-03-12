@@ -35,17 +35,18 @@
 {{!-- <script type="text/javascript" src="/js/highscore.js"></script> --}}
 <script>
 let images = $(".profImage")
-console.log(images)
+{{!-- console.log(images) --}}
 
 for (let i = 0; i < images.length; i++){
-  console.log(images[i].id)
+  {{!-- console.log(images[i].id) --}}
 
 $.get(`/api/photo/${images[i].id}`).then(function(data){
   if (data.length === 0) {
     $(`#${images[i].id}`).attr("src", `/assets/hero1.png`);
   }else {
     let img = data[0].name
-    $(`#${images[i].id}`).attr("src", `/assets/tmp/${img}`)
+    images[i].attributes[2].value =  `/assets/tmp/${img}`
+    {{!-- $(`#${images[i].id}`).attr("src", `/assets/tmp/${img}`) --}}
   }
 })
 }

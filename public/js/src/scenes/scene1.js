@@ -40,7 +40,7 @@ export default class Game extends Phaser.Scene {
         //key is used as a reference later to call the object.
         //the path is not relevant
         //background image
-        this.load.image('background', 'assets/bg_layer1.png')
+        this.load.image('background', 'assets/space.png')
         //platform images
         this.load.image('platform', 'assets/stone.png')
         this.load.image('hero-idle', 'assets/hero1.png')

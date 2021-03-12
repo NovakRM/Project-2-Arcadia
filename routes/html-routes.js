@@ -72,7 +72,7 @@ module.exports = function(app) {
   //route for game two highscores
      app.get("/paperb-scores", isAuthenticated, function(req, res) {
       db.machTwoScore.findAll({
-        include: [db.User, db.Image], 
+        include: [db.User], 
         order: [
           ['score', 'DESC'],
     ],
@@ -83,6 +83,7 @@ module.exports = function(app) {
           return {
             score: data.score,
             userName: data.User.userName,
+            id: data.User.id,
           }
         })
         }

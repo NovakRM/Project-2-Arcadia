@@ -12,5 +12,15 @@ $(document).ready(function() {
     });
 
 
+    $.get("/api/photo").then(function(data){
+      if (data.length === 0) {
+        $(".icon").attr("src", `/LayoutTests/placeholder.png`);
+      }else {
+        let img = data[0].name
+        $(".icon").attr("src", `/assets/tmp/${img}`)
+      }
+    })
+
+
   });
   

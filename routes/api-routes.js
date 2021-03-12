@@ -114,11 +114,27 @@ module.exports = function(app) {
 // Add photo
 app.post("/upload", upload.single("file"), uploadController.uploadFiles);
 
+//get user photo
 app.get("/api/photo", function(req, res) {
   if (!req.user) {
     res.json({});
   }else {
     let userId = req.user.id
+    db.Image.findAll({
+      where: {Userid: userId},
+      order: [
+        ['createdAt', 'DESC'],
+      ]
+    }).then((dbImage) => {res.json(dbImage)})
+  }
+})
+
+//get specific photo
+app.get("/api/photo/:id", function(req, res) {
+  if (!req.user) {
+    res.json({});
+  }else {
+    let userId = req.params.id
     db.Image.findAll({
       where: {Userid: userId},
       order: [

@@ -49,81 +49,30 @@ module.exports = function(app) {
 
      //route for game one highscores
      app.get("/grogu-scores", isAuthenticated, function(req, res) {
-      let profileImage;
-      let userId = req.user.id
-    db.Image.findAll({
-      where: {Userid: userId},
-      order: [
-        ['createdAt', 'DESC'],
-      ]
-    }).then((dbImage) => {
-      if (dbImage.length === 0) {
-        profileImage = `/assets/hero1.png`
-      }else {
-         profileImage = dbImage[0].name
-      }
-
-
       db.machOneScore.findAll({
         include: [db.User],
         order: [
           ['score', 'DESC'],
     ],
       }).then((data) => {
-        //console.log(data)
         const obj = {
         scores: data.map(data =>{
           return {
             score: data.score,
             userName: data.User.userName,
-            image: profileImage
+            id: data.User.id,
           }
         })
         }
   
         res.render('highscore',(obj));
       })
-    })
     });
 
-        //  //route for game two highscores
-        //  app.get("/paperb-scores", isAuthenticated, function(req, res) {
-        //   db.machTwoScore.findAll({
-        //     include: [db.User]
-        //   }).then((data) => {
-        //     console.log(data)
-        //     const obj = {
-        //     scores: data.map(data =>{
-        //       return {
-        //         score: data.score,
-        //         userName: data.User.userName
-        //       }
-        //     })
-        //     }
-      
-        //     res.render('highscore-two',(obj));
-        //   })
-        // });
-
-             //route for game two highscores
+  //route for game two highscores
      app.get("/paperb-scores", isAuthenticated, function(req, res) {
-      let profileImage;
-      let userId = req.user.id
-    db.Image.findAll({
-      where: {Userid: userId},
-      order: [
-        ['createdAt', 'DESC'],
-      ]
-    }).then((dbImage) => {
-      if (dbImage.length === 0) {
-        profileImage = `/assets/hero1.png`
-      }else {
-         profileImage = dbImage[0].name
-      }
-
-
       db.machTwoScore.findAll({
-        include: [db.User],
+        include: [db.User], 
         order: [
           ['score', 'DESC'],
     ],
@@ -134,13 +83,12 @@ module.exports = function(app) {
           return {
             score: data.score,
             userName: data.User.userName,
-            image: profileImage
+            id: data.User.id,
           }
         })
         }
   
         res.render('highscore-two',(obj));
       })
-    })
     });
 };

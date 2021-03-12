@@ -34,16 +34,16 @@ module.exports = function(app) {
   });
 
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/game", isAuthenticated, function(req, res) {
+  app.get("/grogu-quest", isAuthenticated, function(req, res) {
     res.render('game');
   });
   //route for game2
-  app.get("/game2", isAuthenticated, function(req, res) {
+  app.get("/paperb-moon", isAuthenticated, function(req, res) {
     res.render('game2');
   });
 
      //route for game one highscores
-     app.get("/highscores", isAuthenticated, function(req, res) {
+     app.get("/grogu-scores", isAuthenticated, function(req, res) {
       db.machOneScore.findAll({
         include: [db.User],
         order: [
@@ -65,7 +65,7 @@ module.exports = function(app) {
     });
 
          //route for game two highscores
-         app.get("/highscores-two", isAuthenticated, function(req, res) {
+         app.get("/paperb-scores", isAuthenticated, function(req, res) {
           db.machTwoScore.findAll({
             include: [db.User]
           }).then((data) => {

@@ -33,6 +33,11 @@ module.exports = function(app) {
     res.render('profile');
   });
 
+   // If a user who is not logged in tries to access this route they will be redirected to the signup page
+   app.get("/upload", isAuthenticated, function(req, res) {
+    res.render('profile');
+  });
+
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/grogu-quest", isAuthenticated, function(req, res) {
     res.render('game');

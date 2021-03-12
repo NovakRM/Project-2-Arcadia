@@ -24,7 +24,7 @@ const uploadFiles = async (req, res) => {
         image.data
       );
 
-      return res.send(`File has been uploaded.`);
+      return res.render(`profile`);
     });
   } catch (error) {
     console.log(error);

@@ -52,6 +52,15 @@ updatePost(userName)
 
 }
 
+$.get("/api/photo").then(function(data){
+  if (data.length === 0) {
+    $("#profileImage").attr("src", `/assets/hero1.png`);
+  }else {
+    let img = data[0].name
+    $("#profileImage").attr("src", `/assets/tmp/${img}`)
+  }
+})
+
 
 
 });

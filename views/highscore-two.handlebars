@@ -1,35 +1,36 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+<div class="container">
+  <div class="header">
+    <h2 class="hTitle">Arcadia</h2>
+    <div class="hNav">
+      <a href="/"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/highscore"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
     </div>
   </div>
-</nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Paper Bryan: To The Moon</h2>
+    <div class="modal" style="display:block">
+      <div class="scores">
+        <h2 class="welcomeUser">Paper Bryan: To The Moon</h2>
       </div>
+      <div class="dashBody">
+        <div class="scoreRow">
+          {{#each scores}}
+            {{> scores/machTwoScore-block }}
+          {{/each}}
+        </div>
     </div>
   </div>
-   <div class="container">
-     <div class= "row">
-        <div>
-                        <ul>
-                        {{#each scores}}
-                        {{!-- <li>score:</li> --}}
-                        {{> scores/machTwoScore-block }}
-                        {{/each}}
-                        </ul>
-        </div>
-     </div>
+
+</div>
+
+<div class="footer">
+    <div class="fNav">
+    <a href="/"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+    <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+    <a href="/highscore"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+    <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
   </div>
-   <br></br>
-  <a href="/profile"><button id="profBtn" class="btn btn-dark">Update your Profile</button></a>
-   <br></br>
-  <a href="/paperb-moon"><button id="gameBtn" class="btn btn-dark">Play To The Moon</button></a>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {{!-- <script type="text/javascript" src="/js/highscore.js"></script> --}}

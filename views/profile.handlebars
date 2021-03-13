@@ -1,98 +1,79 @@
-
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-    </div>
-  </div>
-</nav>
 <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <img src="" alt="" id="profileImage">
-      </div>
+  <div class="header">
+    <h2 class="hTitle">Arcadia</h2>
+    <div class="hNav">
+      <a href="/"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/highscore"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
+
+  <div class="modal" style="display:block">
+    <div class="modalHeader">
+      <img class="icon" id="profileImage" src=""> 
+      {{!-- placeholder for icon class --}}
+      <h2 class="welcomeUser">Welcome, <span class="member-name"></span>!</h2>
     </div>
-  </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
+
+    <div class="dashBody">
+      What would you like to do?
+      <div class="break"></div> 
+      <div class="options">
         <form id="cms">
           <div class="form-group">
             <label for="title">User Name:</label>
             <input placeholder="user name" type="text" class="form-control" id="userName">
             </div>
-            <br />
+            <br/>
             <button type="submit" class="btn btn-success submit">Submit</button>
           </div>
         </form>
-      </div>
-    </div>
-  <br></br>
-  {{!-- Photo Upload for profile --}}
-  <form
-      class="mt-4"
-      action="/upload"
-      method="POST"
-      enctype="multipart/form-data">
 
-      <div class="form-group">
-              <input
-                type="file"
-                name="file"
-                id="input-files"
-                class="form-control-file border"
-              />
-            </div>
+        <form class="mt-4" action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <input type="file" name="file" id="input-files" class="form-control-file border"/>
+          </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="preview-images"></div>
-        </div>
+        </form>
+
       </div>
     </div>
-  <br></br>
-  <div class="col-6">
-            <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
+  </div>
+
+  <div class="footer">
+      <div class="fNav">
+      <a href="/"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/highscore"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
     </div>
-  {{!-- <button class="btn btn-dark">Play a Game</button>  --}}
+  </div>
 
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script type="text/javascript" src="/js/profile.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-	<script type="text/javascript" src="/js/profile.js"></script>
-
-  <script>
-      $(document).ready(function() {
-        let imagesPreview = function(input, placeToInsertImagePreview) {
-          if (input.files) {
-            let filesAmount = input.files.length;
-            for (i = 0; i < filesAmount; i++) {
-              let reader = new FileReader();
-              reader.onload = function(event) {
-                $($.parseHTML("<img>"))
-                  .attr("src", event.target.result)
-                  .appendTo(placeToInsertImagePreview);
-              };
-              reader.readAsDataURL(input.files[i]);
-            }
-          }
-        };
-        $("#input-files").on("change", function() {
-          imagesPreview(this, "div.preview-images");
-        });
-      });
-    </script>
+<script>
+  $(document).ready(function() {
+    let imagesPreview = function(input, placeToInsertImagePreview) {
+      if (input.files) {
+        let filesAmount = input.files.length;
+        for (i = 0; i < filesAmount; i++) {
+          let reader = new FileReader();
+          reader.onload = function(event) {
+            $($.parseHTML("<img>"))
+              .attr("src", event.target.result)
+              .appendTo(placeToInsertImagePreview);
+          };
+          reader.readAsDataURL(input.files[i]);
+        }
+      }
+    };
+    $("#input-files").on("change", function() {
+      imagesPreview(this, "div.preview-images");
+    });
+  });
+</script>

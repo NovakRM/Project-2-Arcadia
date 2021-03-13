@@ -14,6 +14,15 @@ body{
   font-family: 'Barlow', sans-serif;
 }
 
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+hr{
+  border-top: 1px solid #ee1f67;
+}
+
 /* Links */
 a{
   color: #ee1f67;
@@ -158,6 +167,24 @@ a:hover{
   flex-direction: row;
 }
 
+/* ================== SCORES VIEW ================== */
+.scores{
+  width: 100%;
+  height: 5em;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #19b5b8;
+  border-bottom: 1px solid #19b5b8;
+  position: absolute;
+}
+
+.scoreRow{
+  display: flex;
+  flex-direction: row;
+}
 
 /* ================== MODALS ================== */
 
@@ -187,7 +214,6 @@ a:hover{
   border-bottom: 1px solid #19b5b8;
   position: absolute;
 }
-
 .modalBody{
   padding: 2em;
   color: #ffffff;

@@ -5,12 +5,12 @@ const Image = db.images;
 
 const uploadFiles = async (req, res) => {
   try {
-    console.log(req.file);
+    //console.log(req.file);
 
     if (req.file == undefined) {
-      return res.send(`You must select a file.`);
+      return 
     }
-    console.log(req.user.id)
+    //console.log(req.user.id)
     Image.create({
       type: req.file.mimetype,
       name: req.file.originalname,

@@ -111,6 +111,7 @@
               let reader = new FileReader();
               reader.onload = function(event) {
                 $($.parseHTML("<img>"))
+                  .attr("class", "previewImg2")
                   .attr("src", event.target.result)
                   .appendTo(placeToInsertImagePreview);
               };

@@ -22,9 +22,20 @@
       </div>
     </div>
   </div>
+
+  <div class="col-6">
+            <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
+    </div>
+    <div class="col-6">
+            <button onclick="showElement()" id="profBtn" class="btn btn-dark">Change Username</button>   
+    </div>
+    <div class="col-6">
+            <button onclick="updatePhoto()" id="profBtn" class="btn btn-dark">Update Photo</button> 
+    </div>
+
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <form id="cms">
+        <form id="cms" style="display: none;">
           <div class="form-group">
             <label for="title">User Name:</label>
             <input placeholder="user name" type="text" class="form-control" id="userName">
@@ -37,7 +48,7 @@
     </div>
   <br></br>
   {{!-- Photo Upload for profile --}}
-  <form
+  <form id="photoUpload" style="display: none;"
       class="mt-4"
       action="/upload"
       method="POST"
@@ -63,14 +74,20 @@
       </div>
     </div>
   <br></br>
-  <div class="col-6">
+  {{!-- <div class="col-6">
             <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
     </div>
+    <div class="col-6">
+            <a href="/members"><button id="profBtn" class="btn btn-dark">Change Username</button></a>   
+    </div>
+    <div class="col-6">
+            <a href="/members"><button id="profBtn" class="btn btn-dark">Update Photo</button></a>   
+    </div> --}}
   {{!-- <button class="btn btn-dark">Play a Game</button>  --}}
 
 
 
-
+  {{!-- <script src="../public/css/profilepage.css"></script> --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script type="text/javascript" src="/js/profile.js"></script>
@@ -95,4 +112,27 @@
           imagesPreview(this, "div.preview-images");
         });
       });
+    </script>
+
+    <script>
+      function showElement() {
+        console.log("119")
+        const elDiv = document.getElementById("cms")
+        if(elDiv.style.display === "none") {
+          elDiv.style.display = "block"
+          console.log("123")
+        }
+      }
+
+      function updatePhoto() {
+        console.log("119")
+        const photoDiv = document.getElementById("photoUpload")
+        if(photoDiv.style.display === "none") {
+          photoDiv.style.display = "block"
+          console.log("123")
+        }
+        
+      }
+      
+      
     </script>

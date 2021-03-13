@@ -2,9 +2,9 @@ $(document).ready(function() {
 let userInfo
 const nameInput = document.getElementById('userName');
 //const cmsForm = document.getElementById('cms');
-    $("#cms").on('submit',()=>{
+    $("#cms").on('submit',(e)=>{
         
-            handleFormSubmit()
+            handleFormSubmit(e)
         } );
 
 
@@ -27,7 +27,7 @@ const nameInput = document.getElementById('userName');
       //   });
 
 const handleFormSubmit = (e) => {
-//  e.preventDefault();
+e.preventDefault();
 
 
   const userName = {
@@ -44,7 +44,10 @@ const handleFormSubmit = (e) => {
       },
       body: JSON.stringify(post),
     })
-      .then(() =>{})
+      .then(() =>{
+        window.location.reload()
+        $('#userName').val("")
+      })
       .catch((err) => console.error(err));
   };
 

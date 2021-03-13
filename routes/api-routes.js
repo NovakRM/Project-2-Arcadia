@@ -72,6 +72,7 @@ module.exports = function(app) {
 
   //put request for usernames
   app.put("/api/username", function(req, res) {
+    console.log(req.body.userName)
     db.User.update(
     {userName: req.body.userName},
     {where: {

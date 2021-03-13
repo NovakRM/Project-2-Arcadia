@@ -167,9 +167,27 @@ h2 {
   align-items: center;
 }
 
-/* #cms {
-  display: none;
-} */
+/* ================== SCORES VIEW ================== */
+
+.scores{
+  width: 100%;
+  height: 5em;
+  padding: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #19b5b8;
+  border-bottom: 1px solid #19b5b8;
+  position: absolute;
+}
+
+.scoreRow{
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* ================== MODALS ================== */
 
 .modal{

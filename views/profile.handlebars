@@ -1,20 +1,24 @@
-
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+<div class="container">
+  <div class="header">
+    <h2 class="hTitle">Arcadia</h2>
+    <div class="hNav">
+      <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
     </div>
   </div>
-</nav>
+
+<div class="profOptions">
+
+
 <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <img src="" alt="" id="profileImage">
+        <img class="icon" src="" alt="" id="profileImage">
       </div>
     </div>
   </div>
+
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
@@ -22,10 +26,8 @@
       </div>
     </div>
   </div>
+  
 
-  <div class="col-6">
-            <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
-    </div>
     <div class="col-6">
             <button onclick="showElement()" id="profBtn" class="btn btn-dark">Change Username</button>   
     </div>
@@ -42,10 +44,11 @@
             </div>
             <br />
             <button type="submit" class="btn btn-success submit">Submit</button>
-          </div>
         </form>
+        </div>
       </div>
-    </div>
+
+
   <br></br>
   {{!-- Photo Upload for profile --}}
   <form id="photoUpload" style="display: none;"
@@ -61,11 +64,9 @@
                 id="input-files"
                 class="form-control-file border"
               />
-            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </form>
-        </div>
-      </div>
       <hr />
       <div class="row">
         <div class="col-sm-12">
@@ -73,7 +74,16 @@
         </div>
       </div>
     </div>
-  <br></br>
+
+
+  <div class="footer">
+      <div class="fNav">
+      <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
+    </div>
+  </div>
+</div>
+
   {{!-- <div class="col-6">
             <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
     </div>

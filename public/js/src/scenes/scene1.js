@@ -1,7 +1,6 @@
 import Phaser from '../lib/phaser.js';
 import Star from  '../game/star.js';
-import GameOver from '../scenes/gameOver.js'
-import phaser from '../lib/phaser.js';
+import Astroid from '../game/astroid.js';
 
 
 var scoreText;
@@ -13,6 +12,7 @@ export default class Game extends Phaser.Scene {
     player
     /** @type {Phaser.Physics.Arcade.StaticGroup} */
     platforms
+    deaths
     /** @type {Phaser.Types.Input.Keyboard.CursorKeys} */
     cursors
     /** @type {Phaser.Physics.Arcade.Group} */
@@ -45,7 +45,6 @@ export default class Game extends Phaser.Scene {
         this.load.image('platform', 'assets/stone.png')
         this.load.image('hero-idle', 'assets/hero1.png')
         this.load.image('hero-jump', 'assets/hero2.png')
-        this.load.image('chain', 'assets/chain.png')
         //star
         this.load.image('star', 'assets/star.png')
         //player input
@@ -84,6 +83,7 @@ export default class Game extends Phaser.Scene {
             body.updateFromGameObject();
         }
 
+
         //--------player---------
         //use class property instead of local variable
         this.player = this.physics.add.sprite(240, 320, 'hero-idle').setScale(2);
@@ -101,7 +101,7 @@ export default class Game extends Phaser.Scene {
 
         //---------star--------
 
-        //const star = new Carrot(this, 240, 320, 'star');
+        //const star = new Star(this, 240, 320, 'star');
         //add a physics group and pass in a config object for star
         //the physics group will create Phaser.Physics.Arcade.Sprite by default. calltype will override that.
         this.star = this.physics.add.group({
@@ -125,13 +125,13 @@ export default class Game extends Phaser.Scene {
             this
         )
         //text(x-axis, y-axis, intial text, argument for styles)
-        const style = {color: '#000', fontSize: 24}
+        const style = {color: '#03fc84', fontSize: 24}
         // Phaser.starCollectedText = 
         scoreText = this.add.text(240, 10, this.starCollectedText, style)
             //stop from scrolling off screen
             .setScrollFactor(0)
             //keep the text top centered. Also called a anchor or pivot point
-            .setOrigin(0.5, 0)
+            .setOrigin(0, 0)
             
     }
 
@@ -172,6 +172,8 @@ export default class Game extends Phaser.Scene {
                 this.addStarAbove(platform)
             }
         })
+
+
         this.star.children.iterate(child => {
             /** @type {Phaser.Physics.Arcade.Sprite} */
             const star = child;
@@ -194,10 +196,7 @@ export default class Game extends Phaser.Scene {
             //stop the movement if not left or right
             this.player.setVelocityX(0)
         }
-        if(this.cursors.down.isDown) {
-            console.log('restart')
-            this.scene.restart(Game);
-        }
+        
         
         
         
@@ -268,6 +267,7 @@ export default class Game extends Phaser.Scene {
             scoreText.setText(value)
             
         }
+
         //algo for finding the bottom most object
         findBottomMostPlatform() {
             //getting all platforms as an array

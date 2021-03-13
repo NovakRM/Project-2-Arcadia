@@ -1,19 +1,35 @@
-<div class="nav row">
+<div class="container">
+  <div class="header">
+    <h2 class="hTitle">Arcadia</h2>
+    <div class="hNav">
+      <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/grogu-scores"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
+    </div>
+  </div>
+
+<div id="groguQuest" > 
+</div>
+
+<br></br>
+
+<div class="nav row playAgain">
     <div class="col-6">
             <a href="/grogu-quest"><button id="profBtn" class="btn btn-dark">Play Again</button></a>   
     </div>
-    <div class="col-2">
-            <a href="/grogu-scores"><button id="scoreBtn" class="btn btn-dark">High Scores</button></a>
-    </div>
-    <div class="col-6">
-            <a href="/profile"><button id="profBtn" class="btn btn-dark">Update your Profile</button></a>   
-    </div>
-      <div class="col-6">
-            <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
-    </div>
 </div>
 
+  <div class="footer">
+      <div class="fNav">
+      <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
+      <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/grogu-scores"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
+    </div>
+  </div>
 
+</div>
 <script type="text/javascript">
 
 var config = {
@@ -27,6 +43,7 @@ var config = {
             debug: false
         }
     },
+    parent: groguQuest,
     scene: {
         preload: preload,
         create: create,

@@ -1,0 +1,38 @@
+#groguQuest{
+    position: relative;
+    top: 15vh;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+canvas{
+    border-radius: 10px; 
+
+}
+
+
+.playAgain{
+position: absolute;
+bottom: 10vh;
+margin-right: auto;
+margin-left: auto;
+}
+
+/* game2.handlebars style */
+#game2 {
+    position: relative;
+    top: 15vh;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+
+}
+
+  /* .game2Header,
+  .game2Controls {
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+   */

@@ -42,11 +42,10 @@
 
   $.get(`/api/photo/${images[i].id}`).then(function(data){
     if (data.length === 0) {
-      $(`#${images[i].id}`).attr("src", `/assets/hero1.png`);
+      images[i].attributes[2].value = `/assets/hero1.png`
     }else {
       let img = data[0].name
       images[i].attributes[2].value =  `/assets/tmp/${img}`
-      {{!-- $(`#${images[i].id}`).attr("src", `/assets/tmp/${img}`) --}}
     }
   })
   }

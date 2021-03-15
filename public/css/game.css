@@ -3,7 +3,8 @@
     top: 15vh;
     margin-right: auto;
     margin-left: auto;
-
+    width: 100%;
+    display: block;
 }
 
 canvas{
@@ -13,10 +14,11 @@ canvas{
 
 
 .playAgain{
-position: absolute;
-bottom: 10vh;
-margin-right: auto;
-margin-left: auto;
+position: relative;
+margin-top: 20vh;
+/* margin-right: auto;
+margin-left: auto; */
+display: block;
 }
 
 /* game2.handlebars style */

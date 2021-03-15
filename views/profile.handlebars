@@ -2,104 +2,46 @@
   <div class="header">
     <h2 class="hTitle">Arcadia</h2>
     <div class="hNav">
-      <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
-      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
-    </div>
-  </div>
-
-<div class="profOptions">
-
-
-<div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <img class="icon" src="" alt="" id="profileImage">
-      </div>
+        <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon, check home"></i></a>
+        <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
     </div>
   </div>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
+  <div class="modal" style="display:block">
+    <div class="modalHeader">
+      <img class="icon" id="profileImage" src=""> 
+      <h2 class="welcomeUser">Welcome, <span class="member-name"></span>!</h2>
     </div>
-  </div>
-  
-
-    <div class="col-6">
-            <button onclick="showElement()" id="profBtn" class="btn btn-dark">Change Username</button>   
-    </div>
-    <div class="col-6">
-            <button onclick="updatePhoto()" id="profBtn" class="btn btn-dark">Update Photo</button> 
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <form id="cms" style="display: none;">
-          <div class="form-group">
-            <label for="title">User Name:</label>
-            <input placeholder="user name" type="text" class="form-control" id="userName">
+    <div class="dashBody">
+      <div class="profOptions">
+        <button onclick="showElement()" id="profBtn" class="btn btn-dark">Change Username</button>  
+          <form id="cms" style="display: none;">
+            <div class="form-group">
+              <input placeholder="user name" type="text" class="form-control" id="userName">
             </div>
-            <br />
-            <button type="submit" class="btn btn-success submit">Submit</button>
-        </form>
-        </div>
-      </div>
-
-
-  <br></br>
-  {{!-- Photo Upload for profile --}}
-  <form id="photoUpload" style="display: none;"
-      class="mt-4"
-      action="/upload"
-      method="POST"
-      enctype="multipart/form-data">
-
-      <div class="form-group">
-              <input
-                type="file"
-                name="file"
-                id="input-files"
-                class="form-control-file border"
-              />
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+              <button type="submit" class="btn">Submit</button>
           </form>
-      <hr />
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="preview-images"></div>
-        </div>
+        <br>
+        <button onclick="updatePhoto()" id="profBtn" class="btn btn-dark">Update Photo</button> 
+          <form id="photoUpload" style="display: none;" action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group"><input type="file" name="file" id="input-files" class="form-control-file border" /></div>
+            <div class="preview-images"></div>
+            <button type="submit" class="btn">Submit</button>
+          </form> 
       </div>
     </div>
-
+  </div>
 
   <div class="footer">
       <div class="fNav">
-      <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon"></i></a>
-      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
-    </div>
+        <a href="/members"><i class="fa fa-home fa-lg" aria-hidden="true" alt="home icon, check home"></i></a>
+        <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
+      </div>
   </div>
 </div>
 
-  {{!-- <div class="col-6">
-            <a href="/members"><button id="profBtn" class="btn btn-dark">Home</button></a>   
-    </div>
-    <div class="col-6">
-            <a href="/members"><button id="profBtn" class="btn btn-dark">Change Username</button></a>   
-    </div>
-    <div class="col-6">
-            <a href="/members"><button id="profBtn" class="btn btn-dark">Update Photo</button></a>   
-    </div> --}}
-  {{!-- <button class="btn btn-dark">Play a Game</button>  --}}
-
-
-
-  {{!-- <script src="../public/css/profilepage.css"></script> --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 	<script type="text/javascript" src="/js/profile.js"></script>
 
   <script>
@@ -127,22 +69,24 @@
 
     <script>
       function showElement() {
-        console.log("119")
+        //console.log("119")
         const elDiv = document.getElementById("cms")
         if(elDiv.style.display === "none") {
           elDiv.style.display = "block"
-          console.log("123")
+          //console.log("123")
+        } else {
+         elDiv.style.display = "none"
         }
       }
+
       function updatePhoto() {
-        console.log("119")
+        //console.log("119")
         const photoDiv = document.getElementById("photoUpload")
         if(photoDiv.style.display === "none") {
           photoDiv.style.display = "block"
-          console.log("123")
+          //console.log("123")
+        } else {
+         photoDiv.style.display = "none"
         }
-        
       }
-      
-      
     </script>

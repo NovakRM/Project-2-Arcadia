@@ -3,13 +3,15 @@
     <h2 class="hTitle">Arcadia</h2>
     <div class="hNav">
       <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+      <a href="/grogu-scores"><i class="fa fa-trophy fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
+      <a href="/paperb-scores"><i class="fa fa-star fa-lg" aria-hidden="true" alt="trophy icon, check high scores"></i></a>
       <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
     </div>
   </div>
 
   <div class="modal" style="display:block">
     <div class="modalHeader">
-      <img class="icon" src=""> 
+      <img class="icon" id="profileImage" src=""> 
       {{!-- placeholder for icon class --}}
       <h2 class="welcomeUser">Welcome, <span class="member-name"></span>!</h2>
     </div>
@@ -25,36 +27,11 @@
 
   <div class="footer">
       <div class="fNav">
-      <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
-      <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
-    </div>
+        <a href="/profile"><i class="fa fa-user fa-lg" aria-hidden="true" alt="user icon, check profile"></i></a>
+        <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true" alt="logout icon, sign out of Arcadia"></i></a>
+      </div>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/members.js"></script>
-
-{{!-- <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-    </div>
-  </div>
-</nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
-    </div>
-  </div>
-  
-   <br></br>
-  <a href="/profile"><button id="profBtn" class="btn btn-dark">Update your Profile</button></a>
-   <br></br>
-  <a href="/game"><button id="gameBtn" class="btn btn-dark">Play Grogu Quest </button></a>
-   <br></br>
-   <a href="/game2"><button id="gameBtn" class="btn btn-dark">Play Paper Bryan To The Moon</button></a>
-  <br></br> --}}

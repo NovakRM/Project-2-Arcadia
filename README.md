@@ -27,7 +27,7 @@
 
   <h3><a name="usage">Usage:</a></h3>
 
-  Please feel free to fork us! 
+  Please feel free to fork us! Deployed link: https://boiling-taiga-07683.herokuapp.com/
 
   <h3><a name="liscense">License:</a></h3>
 

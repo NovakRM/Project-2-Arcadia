@@ -18,6 +18,8 @@
 
   [Questions](#questions)
 
+  [Screenshots](#screenshots)
+
 
   <h3><a name="install">Installation:</a></h3>
 
@@ -45,3 +47,12 @@
 
   If you have any questions please feel free to reach out. 
 
+<a name="screenshots"><h3>Screenshots:</h3></a>  
+
+![landingpage](./public/assets/screenshots/landingpage.jpg)
+![members](./public/assets/screenshots/members.jpg)
+![profile](./public/assets/screenshots/profile.jpg)
+![grogu quest](./public/assets/screenshots/groguquest.jpg)
+![grogu quest scores](./public/assets/screenshots/groguscores.jpg)
+![paper bryan to the moon](./public/assets/screenshots/paperbryan.jpg)
+![paper bryan scores](./public/assets/screenshots/paperscores.jpg)
